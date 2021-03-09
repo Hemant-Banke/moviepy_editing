@@ -21,9 +21,9 @@ def manip_video(vid_name):
     global count
     (vid_title, vid_ext) = vid_name.split('.')[:2]
 
-    if (vid_ext != 'mp4'):
-        print('Not an mp4 video :(')
-        return
+    # if (vid_ext != 'mp4'):
+    #     print('Not an mp4 video :(')
+    #     return
 
     count += 1
 
@@ -57,7 +57,7 @@ def manip_video(vid_name):
         shutil.rmtree('output/'+out_name)
     mkdir('output/'+out_name)
 
-    out_path = 'output/{0}/output.mp4'.format(out_name)
+    out_path = 'output/{0}/output.{1}'.format(out_name, vid_ext)
     stream.write_videofile(out_path, audio = True)
 
 
