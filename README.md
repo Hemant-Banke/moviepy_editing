@@ -1,7 +1,13 @@
 # MoviePy Editing
 
-This project aims to edit (Add a Watermark, Zoom, Crop and Resize) a sequence of input videos.
+This project aims to edit a sequence of input videos.
 The parameters can be adjusted in code.
+**Abilities:**
+- Add a Watermark
+- Generate 5 random Thumbnails
+- Zoom
+- Crop
+- Resize
 
 ## Getting Started
 

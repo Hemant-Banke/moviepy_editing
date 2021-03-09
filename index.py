@@ -4,6 +4,8 @@ from moviepy.video.fx.crop import crop
 from os import listdir, mkdir
 from os.path import isfile, isdir, join
 import shutil
+from PIL import Image
+import random
 
 count = 0
 video_param = {
@@ -50,7 +52,6 @@ def manip_video(vid_name):
 
     stream = CompositeVideoClip([stream, logo])
 
-
     # Write Output
     out_name = "{0}-{1}".format(count, vid_title)
     if (isdir('output/'+out_name)):
@@ -59,6 +60,16 @@ def manip_video(vid_name):
 
     out_path = 'output/{0}/output.{1}'.format(out_name, vid_ext)
     stream.write_videofile(out_path, audio = True)
+
+    # Create Thumnails
+    print('Generating Thumbnails')
+    duration = int(stream.duration)
+    thumb_frames = random.sample(range(1, duration), 5)
+    for thumb_frame in thumb_frames:
+        frame = stream.get_frame(thumb_frame)
+        thumb = Image.fromarray(frame)
+        thumb.save('output/{0}/{1}.jpg'.format(out_name, thumb_frame))
+
 
 
 # Check Logo
